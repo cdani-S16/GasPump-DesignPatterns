@@ -1,0 +1,435 @@
+package strategy;
+
+public abstract class CancelMsg {
+	
+	public abstract void cancelmsg();
+	
+}
+package strategy;
+
+public class CancelMsgGP extends CancelMsg {
+
+	@Override
+	public void cancelmsg() {
+		
+		System.out.println("\n  !!Transaction Cancelled!! \n");
+		System.out.println("\n  Please Start Again: \n");
+		
+	}
+
+}
+package strategy;
+
+public abstract class DisplayMenu {
+	public abstract void DisplayMenu();
+
+}
+package strategy;
+
+public class DisplayMenu_GP1 extends DisplayMenu {
+	public void DisplayMenu()
+	{
+		System.out.println("Gas Pump1:: Select Gas: \n" );
+		System.out.println("> Regular \n" );
+		System.out.println("> Super \n" );
+		System.out.println("Press 8 for Regular and 7 for Super \n");
+	}
+
+}
+package strategy;
+
+public class DisplayMenu_GP2 extends DisplayMenu {
+
+	@Override
+	public void DisplayMenu() {
+		
+		System.out.println("Gas Pump2:: Select Gas: \n" );
+		System.out.println("> Premium \n" );
+		System.out.println("> Regular \n" );
+		System.out.println("> Super \n" );
+			
+		System.out.println("Press 5 for Premium 6 for Regular and 7 for Super \n");
+	}
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class GasPumpedMsg {
+	
+	public abstract void GasPumpedMsg(DataStore dataStore);
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+
+
+public class GasPumpedMsg_GP1 extends GasPumpedMsg {
+	
+	public void GasPumpedMsg(DataStore dataStore){
+		System.out.println(((DataStore1)dataStore).get_G() + " Gallon(s) Pumped"  );
+		System.out.println("\nPress 10 to Continue Pumping:\n");
+	}
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+import dataStore.DataStore2;
+
+public class GasPumpedMsg_GP2 extends GasPumpedMsg {
+
+	@Override
+	public void GasPumpedMsg(DataStore dataStore) {
+		
+		System.out.println(((DataStore2)dataStore).get_L() + " Liters(s) Pumped"  );
+		System.out.println("\nPress 9 to Continue Pumping:\n");
+	}
+
+}
+package strategy;
+
+public abstract class PayMsg {
+	
+	public abstract void PayMsg();
+	
+
+}
+package strategy;
+
+public class PayMsg_GP1 extends PayMsg {
+
+	@Override
+	public void PayMsg() {
+		
+		System.out.println("\n  Pay by CREDIT \n");
+		System.out.println("Press 3 to Pay \n");
+	}
+
+}
+package strategy;
+
+public class PayMsg_GP2 extends PayMsg {
+
+	@Override
+	public void PayMsg() {
+		
+		System.out.println("\n  Pay by CASH \n");
+		System.out.println("Press 3 to Pay \n");
+
+	}
+
+}
+package strategy;
+
+public class PayType {
+
+}
+package strategy;
+
+public class PaytypeGP extends PayType {
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class PrintReceiptMsg {
+
+	
+	public abstract void PrintReceiptMsg(DataStore dataStore);
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+
+
+public class PrintReceiptMsg_GP1 extends PrintReceiptMsg {
+	public void PrintReceiptMsg(DataStore dataStore) {
+
+		System.out.println("Gas Pump 1:\n");		
+		System.out.println("Total Amount: $" + ((DataStore1)dataStore).get_Total() );
+		System.out.println("Quantity:"+ (((DataStore1)dataStore).get_G()-1) + " Gallon(s)" );
+	}
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+import dataStore.DataStore2;
+
+public class PrintReceiptMsg_GP2 extends PrintReceiptMsg {
+
+	@Override
+	public void PrintReceiptMsg(DataStore dataStore) {
+		
+        System.out.println("Gas Pump 2:\n");
+		
+		System.out.println("\nTotal Amount: $" + ((DataStore2)dataStore).get_Total() );
+		System.out.println("Quantity:"+ (((DataStore2)dataStore).get_L()-1) + " Liter(s)" );
+	}
+
+}
+package strategy;
+
+public abstract class PumpGasUnit {
+
+	public abstract void PumpGasUnit();
+}
+package strategy;
+
+public class PumpGasUnit_GP1 extends PumpGasUnit {
+	
+	public void PumpGasUnit()
+	{
+		System.out.println("\nGas Pump 1:: 1 Gallon pumped \n" );
+	}
+
+}
+package strategy;
+
+public class PumpGasUnit_GP2 extends PumpGasUnit {
+
+	@Override
+	public void PumpGasUnit() {
+		
+		System.out.println("\nGas Pump 2:: 1 Liter is Pumped \n" );
+
+	}
+
+}
+package strategy;
+
+public abstract class ReadyMsg {
+
+	public abstract void ReadyMsg(); 
+	
+}
+package strategy;
+
+public class ReadyMsgGP extends ReadyMsg {
+	
+	public void ReadyMsg(){
+		System.out.println("\n  Gas Pump is Ready. ");
+		System.out.println("  Start Pumping: \n");
+	}
+
+}
+package strategy;
+
+public abstract class RejectMsg {
+	
+  public abstract void RejectMsg();
+
+
+
+
+}
+package strategy;
+
+public class RejectMsgGP extends RejectMsg {
+
+	
+
+	@Override
+	public void RejectMsg() {
+		
+		System.out.println("\n  !!Credit Card Rejected!! \n");
+		System.out.println("\n  Please Start Again: \n");
+		
+	}
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class ReturnCash {
+	
+	public abstract void ReturnCash(DataStore datastore);
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+import dataStore.DataStore2;
+
+public class ReturnCashGP extends ReturnCash{
+
+	@Override
+	public void ReturnCash(DataStore datastore) {
+		
+		int cash =((DataStore2)datastore).get_cash();
+		int unit_price = ((DataStore2)datastore).get_Price();
+		int liters = ((DataStore2)datastore).get_L() - 2;
+		
+		int s = cash - (unit_price * liters);
+		
+		System.out.println("the amount of cash to be returned :$"+ s);
+		
+	}
+	
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class  SetInitialValues {
+
+	public abstract void SetInitialValues(DataStore dataStore);
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+
+public class SetInitialValues_GP1 extends SetInitialValues {
+	
+	
+	public void SetInitialValues(DataStore dataStore) {
+		
+		((DataStore1)dataStore).set_G(0);
+		((DataStore1)dataStore).set_Total(0);
+	}
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+import dataStore.DataStore2;
+
+public class SetInitialValues_GP2 extends SetInitialValues {
+
+	@Override
+	public void SetInitialValues(DataStore dataStore) {
+
+		((DataStore2)dataStore).set_L(0);
+		((DataStore2)dataStore).set_Total(0);
+	}
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public  abstract class SetPrice {
+
+	public abstract void SetPrice(DataStore dataStore);
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+
+public class SetPrice_GP1 extends SetPrice {
+
+	
+	public void SetPrice(DataStore dataStore)
+	{
+		System.out.println("\nGas Pump 1:: Gas Price: $" + ((DataStore1)dataStore).get_Price() );
+		
+	}
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public class SetPrice_GP2 extends SetPrice {
+
+	@Override
+	public void SetPrice(DataStore dataStore) {
+
+	}
+
+}
+package strategy;
+
+public abstract class StopMsg {
+	public abstract void StopMsg();
+
+}
+package strategy;
+
+public class StopMsgGP extends StopMsg {
+
+	public void StopMsg(){
+		System.out.println("\n  Gas Pump has stopped!! \n");
+	}
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class StoreCash {
+	
+	public abstract void StoreCash(DataStore dataStore);
+
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore2;
+
+public class StoreCash_GP2 extends StoreCash {
+
+	@Override
+	
+		public void StoreCash(DataStore dataStore)
+		{
+			((DataStore2)dataStore).set_cash();
+			System.out.println("Gas Pump 3:: Cash Stored: $" + ((DataStore2)dataStore).get_cash() );
+		}
+
+	
+
+}
+package strategy;
+
+import dataStore.DataStore;
+
+public abstract class StoreData {
+
+	public abstract void StoreData(DataStore dataStore);
+	
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore1;
+
+
+public class StoreData_GP1 extends StoreData {
+
+	public void StoreData(DataStore dataStore)
+	{
+		((DataStore1)dataStore).set_superprice();
+		((DataStore1)dataStore).set_regularprice();
+	}
+}
+package strategy;
+
+import dataStore.DataStore;
+import dataStore.DataStore2;
+
+public class StoreData_GP2 extends StoreData {
+
+	@Override
+	public void StoreData(DataStore dataStore) {
+		
+		((DataStore2)dataStore).set_premium_price();
+		((DataStore2)dataStore).set_super_price();
+		((DataStore2)dataStore).set_regular_price();
+		
+	}
+
+}
+

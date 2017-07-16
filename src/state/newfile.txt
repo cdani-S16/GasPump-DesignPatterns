@@ -1,0 +1,1024 @@
+package state;
+
+import abstractFactory.AbstractFactory;
+import dataStore.DataStore;
+import output.Output;
+
+public class MDAEFSM {
+
+
+	static state mdaefsmState = null;
+	static state S,S0,S1,S2,S3,S4,S5,S6;
+	
+	AbstractFactory factory = null;
+
+	public MDAEFSM() {
+		
+		S = new S(mdaefsmState);
+		S0 = new S0(mdaefsmState);
+		S1 = new S1(mdaefsmState);
+		S2 = new S2(mdaefsmState);
+		S3 = new S3(mdaefsmState);
+		S4 = new S4(mdaefsmState);
+		S5 = new S5(mdaefsmState);
+		S6 = new S6(mdaefsmState);
+		mdaefsmState = S;
+		
+	}
+	
+	public void Activate() {
+
+		mdaefsmState.Activate();
+		printCurrentState();
+	}
+	
+	public void Start() {
+
+		mdaefsmState.Start();
+		printCurrentState();
+	}
+	
+   public void PayType(int t ) {
+	   
+	   if(t==1){
+		   	mdaefsmState.PayCredit();
+			printCurrentState();
+	   }else{
+		   	mdaefsmState.PayCash();
+			printCurrentState();  
+	   	}
+	}
+
+
+	public void Reject() {
+
+		mdaefsmState.Reject();
+		printCurrentState();
+
+	}
+
+	public void Cancel() {
+
+		mdaefsmState.Cancel();
+		printCurrentState();
+
+	}
+
+	public void Approved() {
+
+		mdaefsmState.Approved();
+		printCurrentState();
+	}
+
+	public void StartPump() {
+
+		mdaefsmState.StartPump();
+		printCurrentState();
+	}
+
+	public void Pump() {
+
+		mdaefsmState.Pump();
+		printCurrentState();
+	}
+
+	public void StopPump() {
+
+		mdaefsmState.StopPump();
+		printCurrentState();
+	}
+
+	public void SelectGas(int g) {
+
+		mdaefsmState.SelectGas(g);
+		printCurrentState();
+	}
+
+	public void Receipt() {
+
+		mdaefsmState.Receipt();
+		printCurrentState();
+	}
+
+	public void NoReceipt() {
+
+		mdaefsmState.NoReceipt();
+		printCurrentState();
+	}
+
+	public void setState(state mdaefsmState) {
+		this.mdaefsmState = mdaefsmState;
+	}
+
+	public state getMachineState() {
+		return mdaefsmState;
+	}
+
+	//return state objects
+	public static state getS0State() {
+		return S0;
+	}
+
+	public static state getS1State() {
+		return S1;
+	}
+
+	public static state getS2State() {
+		return S2;
+	}
+
+	public static state getS3State() {
+		return S3;
+	}
+
+	public static state getS4State() {
+		return S4;
+	}
+
+	public static state getS5State() {
+		return S5;
+	}
+
+	public static state getS6State() {
+		return S6;
+	}
+	
+	public void printCurrentState() {
+		System.out.println("\n" + "Current State : "
+				+ mdaefsmState.getClass().getName() + "\n");
+	}
+	
+	public void ReturnCash() {
+		
+		//customer return cash 
+		mdaefsmState.ReturnCash();
+		printCurrentState();
+		
+	}
+
+
+}
+/**
+ * 
+ */
+package state;
+
+import output.Output;
+
+/**
+ * State class performing activate function
+ */
+public class S extends state {
+
+	public S(state s) {
+		super(s);
+		
+	}
+
+	@Override
+	public void Activate() {
+		
+		outputobject.StoreData();
+		MDAEFSM.mdaefsmState = MDAEFSM.getS0State();
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+
+	}
+
+	@Override
+	public void Approved() {
+		
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+
+	}
+
+	@Override
+	public void Pump() {
+		
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+
+	}
+
+	@Override
+	public void Receipt() {
+		
+
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+
+public class S0 extends state {
+	
+	state s = null;
+
+	public S0(state s) {
+		super(s);
+	}
+	
+
+	public void Activate() {
+		
+
+	}
+
+	
+	public void Start() {
+		
+		outputobject.PayMsg();
+		MDAEFSM.mdaefsmState = (MDAEFSM.getS1State());
+	}
+
+	
+	public void PayCredit() {
+		
+
+	}
+
+	
+	public void PayCash() {
+		
+
+	}
+
+	
+	public void Reject() {
+		
+
+	}
+
+	
+	public void Cancel() {
+		
+
+	}
+
+	
+	public void Approved() {
+		
+
+	}
+
+	
+	public void SelectGas(int g) {
+		
+
+	}
+
+	
+	public void StartPump() {
+		
+
+	}
+
+	
+	public void Pump() {
+		
+
+	}
+
+	
+	public void StopPump() {
+		
+
+	}
+
+	
+	public void Receipt() {
+		
+
+	}
+
+	
+	public void NoReceipt() {
+		
+
+	}
+
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+
+public class S1 extends state {
+
+	MDAEFSM state = null;
+
+	public S1(state s) {
+		super(s);
+		
+	}
+
+	
+	public void Activate() {
+		
+
+	}
+
+	
+	public void Start() {
+		
+
+	}
+
+	
+	public void PayCredit() {
+		
+		MDAEFSM.mdaefsmState = (state.getS2State());
+
+	}
+
+	
+	public void PayCash() {
+		
+		outputobject.StoreCash();
+		outputobject.DisplayMenu();
+		MDAEFSM.mdaefsmState = (state.getS3State());
+
+	}
+
+	
+	public void Reject() {
+		
+
+	}
+
+	
+	public void Cancel() {
+		
+
+	}
+
+	
+	public void Approved() {
+		
+
+	}
+
+	
+	public void SelectGas(int g) {
+		
+
+	}
+
+	
+	public void StartPump() {
+		
+
+	}
+
+	
+	public void Pump() {
+		
+
+	}
+
+	
+	public void StopPump() {
+		
+
+	}
+
+	
+	public void Receipt() {
+		
+
+	}
+
+	
+	public void NoReceipt() {
+		
+
+	}
+
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+
+public class S2 extends state {
+	public S2(state s) {
+		super(s);
+	}
+	
+	MDAEFSM state = null;
+
+	@Override
+	public void Activate() {
+		
+
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+		outputobject.RejectMsg();
+		MDAEFSM.mdaefsmState = (state.getS0State());
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+
+	}
+
+	@Override
+	public void Approved() {
+		outputobject.DisplayMenu();
+		MDAEFSM.mdaefsmState = (state.getS3State());
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+
+	}
+
+	@Override
+	public void Pump() {
+		
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+
+	}
+
+	@Override
+	public void Receipt() {
+		
+
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+}
+package state;
+import mainDriver.Driver;
+
+public class S3 extends state {
+	
+	
+	public S3(state s) {
+		super(s);
+	
+	}
+	
+	@Override
+	public void Activate() {
+		
+
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+		if (Driver.gasPumpType == 1){
+		outputobject.CancelMsg();
+		MDAEFSM.mdaefsmState = (MDAEFSM.getS0State());
+		}
+		else if(Driver.gasPumpType == 2){
+			outputobject.CancelMsg();
+			outputobject.ReturnCash();
+			MDAEFSM.mdaefsmState = (MDAEFSM.getS0State());
+		}
+
+	}
+
+	@Override
+	public void Approved() {
+		
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+		outputobject.SetPrice();
+		MDAEFSM.mdaefsmState = (MDAEFSM.getS4State());
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+
+	}
+
+	@Override
+	public void Pump() {
+		
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+
+	}
+
+	@Override
+	public void Receipt() {
+		
+
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+	
+
+
+}
+package state;
+
+public class S4 extends state {
+
+	public S4(state s) {
+		super(s);
+		//this.state = state;
+	}
+	
+	MDAEFSM state = null;
+
+	@Override
+	public void Activate() {
+		
+
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+
+	}
+
+	@Override
+	public void Approved() {
+		
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+		outputobject.SetInitialValues();
+		outputobject.ReadyMsg();
+		MDAEFSM.mdaefsmState = (state.getS5State());
+
+	}
+
+	@Override
+	public void Pump() {
+		
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+
+	}
+
+	@Override
+	public void Receipt() {
+		
+
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+
+public class S5 extends state {
+
+	public S5(state s) {
+		super(s);
+		//this.state = state;
+	}
+	
+	MDAEFSM state = null;
+
+	@Override
+	public void Activate() {
+		
+
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+
+	}
+
+	@Override
+	public void Approved() {
+		
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+
+	}
+
+	@Override
+	public void Pump() {
+		
+		outputobject.PumpGasUnit();
+		outputobject.GasPumpedMsg();
+		MDAEFSM.mdaefsmState = (state.getS5State());
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+		outputobject.StopMsg();
+		MDAEFSM.mdaefsmState = (state.getS6State());
+
+	}
+
+	@Override
+	public void Receipt() {
+		
+
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+
+import mainDriver.Driver;
+
+public class S6 extends state {
+
+	public S6(state s) {
+		super(s);
+	}
+	
+	MDAEFSM state = null;
+
+	
+	@Override
+	public void Activate() {
+		
+
+	}
+
+	@Override
+	public void Start() {
+		
+
+	}
+
+	@Override
+	public void PayCredit() {
+		
+
+	}
+
+	@Override
+	public void PayCash() {
+		
+
+	}
+
+	@Override
+	public void Reject() {
+		
+
+	}
+
+	@Override
+	public void Cancel() {
+		
+
+	}
+
+	@Override
+	public void Approved() {
+		
+
+	}
+
+	@Override
+	public void SelectGas(int g) {
+		
+
+	}
+
+	@Override
+	public void StartPump() {
+		
+
+	}
+
+	@Override
+	public void Pump() {
+		
+
+	}
+
+	@Override
+	public void StopPump() {
+		
+	}
+	
+	
+
+	@Override
+	public void Receipt() {
+
+		if(Driver.gasPumpType == 1){
+			outputobject.PrintReceiptMsg();
+		}
+		else if (Driver.gasPumpType ==2){
+			outputobject.PrintReceiptMsg();
+			outputobject.ReturnCash();
+		}
+		MDAEFSM.mdaefsmState = (state.getS0State());
+	}
+
+	@Override
+	public void NoReceipt() {
+		
+		outputobject.ReturnCash();
+		MDAEFSM.mdaefsmState = (state.getS0State());
+
+	}
+
+	@Override
+	public void ReturnCash() {
+		
+		
+	}
+
+}
+package state;
+import output.Output;
+public abstract class state  {
+
+	public static Output outputobject;
+	state currentstate;
+	public state( state s)
+	{
+		currentstate = s;
+	}
+	
+	
+	public abstract void Activate();
+
+	public abstract void Start();
+
+	public abstract void PayCredit();
+
+	public abstract void PayCash();
+
+	public abstract void Reject();
+
+	public abstract void Cancel();
+
+	public abstract void Approved();
+
+	public abstract void SelectGas(int g);
+
+	public abstract void StartPump();
+
+	public abstract void Pump();
+
+	public abstract void StopPump();
+
+	public abstract void Receipt();
+
+	public abstract void NoReceipt();
+
+	public void setState(state s) {
+		
+		currentstate = s;
+		
+	}
+
+	public abstract void ReturnCash();
+		
+	
+}
+
